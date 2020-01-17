@@ -1,5 +1,4 @@
 <script>
-  import {onMount} from 'svelte';
   export let projectPos = 0;
 
   export let name;
@@ -11,12 +10,14 @@
 <section bind:this={projectPos}>
   <h1>{name}</h1>
   <p>{description}</p>
+  <p>{slug}</p>
+  <img src={image} alt={slug}>
 </section>
 
 <style>
   section {
-    height: 700px;
-    width: 800px;
+    height: 100vh;
+    width: 100%;
     border: solid;
   }
 </style>

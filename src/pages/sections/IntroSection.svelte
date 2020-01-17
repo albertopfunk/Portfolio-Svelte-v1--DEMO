@@ -10,8 +10,8 @@
 
 <style>
   section {
-    height: 700px;
-    width: 800px;
+    height: 100vh;
+    width: 100%;
     border: solid;
   }
 </style>
