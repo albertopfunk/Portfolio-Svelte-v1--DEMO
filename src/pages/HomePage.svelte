@@ -1,7 +1,4 @@
-
 <script>
-  import {onMount} from 'svelte';
-
   import SideMenu from '../components/SideMenu.svelte';
   import IntroSection from './sections/IntroSection.svelte';
   import ProjectSection from './sections/ProjectSection.svelte';
@@ -14,8 +11,6 @@
   let currentSection = 0;
 
   // keeping track of positions
-
-  // need better math solution for properly keeping track of section positions
   function onInfinite() {
     console.log("=========================CURRENT=========================", currentSection)
     console.log("Intro Pos", introPos.getBoundingClientRect().y);
@@ -59,45 +54,6 @@
       currentSection = 4
     }
   }
-
-  onMount(() => {
-    console.log("==MOUNT==", $projectSectionData)
-    if (
-      introPos.getBoundingClientRect().y < 0 &&
-      introPos.getBoundingClientRect().y > -943
-    ){
-      currentSection = 0
-    }
-
-    if (
-      projectPositions[0].getBoundingClientRect().y < 0 &&
-      projectPositions[0].getBoundingClientRect().y > -943
-    ){
-      currentSection = 1
-    }
-
-    if (
-      projectPositions[1].getBoundingClientRect().y < 0 &&
-      projectPositions[1].getBoundingClientRect().y > -943
-    ){
-      currentSection = 2
-    }
-
-    if (
-      projectPositions[2].getBoundingClientRect().y < 0 &&
-      projectPositions[2].getBoundingClientRect().y > -943
-    ){
-      currentSection = 3
-    }
-
-    if (
-      projectPositions[3].getBoundingClientRect().y < 0 &&
-      projectPositions[3].getBoundingClientRect().y > -943
-    ){
-      currentSection = 4
-    }
-  });
-
 </script>
 
 <svelte:window on:scroll={onInfinite}/>

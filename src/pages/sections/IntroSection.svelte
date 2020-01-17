@@ -1,4 +1,3 @@
-
 <script>
   export let introPos = 0
 </script>
