@@ -1,6 +1,6 @@
 import { readable } from 'svelte/store'
 
-export const projectData = readable([
+export const projectSectionData = readable([
   {
     name: "Dev Profiles",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum perferendis ea, officiis, cum asperiores repellendus natus dicta tenetur inventore blanditiis ratione dolorem, quas eum perspiciatis placeat atque nihil. Assumenda, et!",
@@ -27,3 +27,17 @@ export const projectData = readable([
   },
 ]);
 
+export const projectPageData = readable({
+  "dev-profiles": {
+    name: "Dev Profiles"
+  },
+  "gastronomical": {
+    name: "Gastronomical"
+  },
+  "game-of-life": {
+    name: "Game of Life"
+  },
+  "portfolio": {
+    name: "Portfolio"
+  }
+})
