@@ -26,7 +26,7 @@
   .then(component => renderComponent(component, paramsObj)))
 
   router.listen();
-  onDestroy(router.unlisten());
+  onDestroy(router.unlisten);
 </script>
 
 
