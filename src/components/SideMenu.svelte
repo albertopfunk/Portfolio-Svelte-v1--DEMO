@@ -9,6 +9,7 @@
     <li class="{currentSection === 2 ? 'active' : ''}">3</li>
     <li class="{currentSection === 3 ? 'active' : ''}">4</li>
     <li class="{currentSection === 4 ? 'active' : ''}">5</li>
+    <li class="{currentSection === 5 ? 'active' : ''}">6</li>
   </ul>
 </aside>
 

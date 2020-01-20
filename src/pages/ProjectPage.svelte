@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>{$projectPageData[params.project].name}</title>
+</svelte:head>
+
 <script>
   import {projectPageData} from '../data/stores.js';
 
