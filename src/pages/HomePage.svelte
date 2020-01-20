@@ -1,77 +1,78 @@
 <script>
+  import {onMount} from 'svelte'
   import SideMenu from '../components/SideMenu.svelte';
   import IntroSection from './sections/IntroSection.svelte';
   import ProjectSection from './sections/ProjectSection.svelte';
+  import ContactSection from './sections/ContactSection.svelte';
 
   import {projectSectionData} from '../data/stores.js';
- 
-  // section positions
-  let introPos;
-  let projectPositions = [];
+
+
   let currentSection = 0;
+  let introPos;
+  let contactPos;
+  let projectPositions = [];
 
-  // keeping track of positions
-  function onInfinite() {
-    console.log("=========================CURRENT=========================", currentSection)
-    console.log("Intro Pos", introPos.getBoundingClientRect().y);
-    console.log("Dev Profiles Section", projectPositions[0].getBoundingClientRect().y);
-    console.log("Gastronomical Section", projectPositions[1].getBoundingClientRect().y);
-    console.log("Game of Life Section", projectPositions[2].getBoundingClientRect().y);
-    console.log("Personal Portfolio Section", projectPositions[3].getBoundingClientRect().y);
+  let options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.7
+  }
 
-    if (
-      introPos.getBoundingClientRect().y < 200 &&
-      introPos.getBoundingClientRect().y > -10
-    ){
-      currentSection = 0
-    }
+  let observer = new IntersectionObserver(onIntersection, options)
 
-    if (
-      projectPositions[0].getBoundingClientRect().y < 200 &&
-      projectPositions[0].getBoundingClientRect().y > -10
-    ){
-      currentSection = 1
-    }
+  onMount(() => {
+    observer.observe(introPos);
+    observer.observe(contactPos);
+    projectPositions.forEach(project => observer.observe(project));
+  })
 
-    if (
-      projectPositions[1].getBoundingClientRect().y < 200 &&
-      projectPositions[1].getBoundingClientRect().y > -10
-    ){
-      currentSection = 2
-    }
-
-    if (
-      projectPositions[2].getBoundingClientRect().y < 200 &&
-      projectPositions[2].getBoundingClientRect().y > -10
-    ){
-      currentSection = 3
-    }
-
-    if (
-      projectPositions[3].getBoundingClientRect().y < 200 &&
-      projectPositions[3].getBoundingClientRect().y > -10
-    ){
-      currentSection = 4
+  function onIntersection(entries, observer) {
+    let current = entries.filter(entry => entry.isIntersecting);
+    
+    if (current.length > 0) {
+      current = current[0].target.dataset.section;
+      
+      switch(current) {
+        case "intro":
+          currentSection = 0;
+        break;
+        case "dev-profiles":
+          currentSection = 1;
+        break;
+        case "gastronomical":
+          currentSection = 2;
+        break;
+        case "game-of-life":
+          currentSection = 3;
+        break;
+        case "portfolio":
+          currentSection = 4;
+        break;
+        case "contact":
+          currentSection = 5;
+        break;
+        default:
+          return;
+      }
     }
   }
 </script>
 
-<svelte:window on:scroll={onInfinite}/>
-
 <SideMenu {currentSection} />
 <main>
-  <IntroSection bind:introPos />
-  {#each $projectSectionData as project, index}
-    <ProjectSection
-      name={project.name}
-      description={project.description}
-      image={project.image}
-      slug={project.slug}
-      bind:projectPos={projectPositions[index]}
-    />
-  {/each}
+<IntroSection bind:introPos />
+{#each $projectSectionData as project, index}
+  <ProjectSection
+    name={project.name}
+    description={project.description}
+    image={project.image}
+    slug={project.slug}
+    bind:projectPos={projectPositions[index]}
+  />
+{/each}
+<ContactSection bind:contactPos />
 </main>
-
 
 <style>
 </style>

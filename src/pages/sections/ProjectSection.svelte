@@ -7,10 +7,12 @@
   export let slug;
 </script>
 
-<section bind:this={projectPos}>
+<section data-section={slug} bind:this={projectPos}>
   <h1>{name}</h1>
   <p>{description}</p>
-  <p>{slug}</p>
+  <a href="/projects/{slug}">
+    <p>{slug}</p>
+  </a>
   <img src={image} alt={slug}>
 </section>
 

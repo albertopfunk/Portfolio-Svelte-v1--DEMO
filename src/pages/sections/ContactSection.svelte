@@ -1,10 +1,11 @@
 <script>
-  export let introPos = 0
+  export let contactPos;
 </script>
 
-
-<section data-section={"intro"} bind:this={introPos}>
-  <h1>Hello Intro</h1>
+<section data-section={"contact"} bind:this={contactPos}>
+  <h1>
+    HELLO CONTACT
+  </h1>
 </section>
 
 <style>
