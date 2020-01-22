@@ -11,7 +11,7 @@
   <a href="/projects/{slug}">
     <p>{slug}</p>
   </a>
-  <img src={image} alt={slug}>
+  <img src="{image}" alt="{slug}" />
 </article>
 
 <style>

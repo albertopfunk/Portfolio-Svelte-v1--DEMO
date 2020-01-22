@@ -1,0 +1,23 @@
+{
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "no-console": 0
+  },
+  "plugins": ["svelte3"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "globals": {
+    "process": true
+  },
+  "overrides": [
+    {
+      "files": ["**/*.svelte"]
+    }
+  ]
+}

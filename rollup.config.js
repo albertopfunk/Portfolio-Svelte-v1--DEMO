@@ -7,45 +7,35 @@ import { terser } from 'rollup-plugin-terser';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/index.js',
-	output: {
-		name: 'app',
-		format: 'esm',
-		sourcemap: true,
-		dir: 'public'
-	},
-	plugins: [
-		svelte({
-			// enable run-time checks when not in production
-			dev: !production,
-			// we'll extract any component CSS out into
-			// a separate file — better for performance
-			css: css => {
-				css.write('public/bundle.css');
-			}
-		}),
+  input: 'src/index.js',
+  output: {
+    name: 'app',
+    format: 'esm',
+    sourcemap: true,
+    dir: 'public'
+  },
+  plugins: [
+    svelte({
+      // enable run-time checks when not in production
+      dev: !production,
+      
+      // extract any component CSS out into a separate file
+      css: css => {
+        css.write('public/bundle.css');
+      }
+    }),
 
-		// If you have external dependencies installed from
-		// npm, you'll most likely need these plugins. In
-		// some cases you'll need additional configuration —
-		// consult the documentation for details:
-		// https://github.com/rollup/plugins/tree/master/packages/commonjs
-		resolve(),
-		commonjs(),
+    // used for external dependencies installed from npm
+    resolve(),
+    commonjs(),
 
-		// In dev mode, call `npm run start` once
-		// the bundle has been generated
-		//- !production && serve(),
+    // live reload when not in production
+    !production && livereload('public'),
 
-		// Watch the `public` directory and refresh the
-		// browser on changes when not in production
-		!production && livereload('public'),
-
-		// If we're building for production (npm run build
-		// instead of npm run dev), minify
-		production && terser()
-	],
-	watch: {
-		clearScreen: false
-	}
+    // building for production, minify
+    production && terser()
+  ],
+  watch: {
+    clearScreen: false
+  }
 };

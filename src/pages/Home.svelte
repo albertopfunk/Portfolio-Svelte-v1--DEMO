@@ -1,15 +1,11 @@
-<svelte:head>
-  <title>Alberto | Front-End Developer</title>
-</svelte:head>
-
 <script>
-  import {onMount} from 'svelte'
-  import SideMenu from '../components/SideMenu.svelte';
-  import IntroSection from './sections/IntroSection.svelte';
-  import ProjectSection from './sections/ProjectSection.svelte';
-  import ContactSection from './sections/ContactSection.svelte';
+  import { onMount } from "svelte";
+  import SideMenu from "../components/SideMenu.svelte";
+  import IntroSection from "./sections/IntroSection.svelte";
+  import ProjectSection from "./sections/ProjectSection.svelte";
+  import ContactSection from "./sections/ContactSection.svelte";
 
-  import {projectSectionData} from '../data/stores.js';
+  import { projectSectionData } from "../data/stores.js";
 
   let currentSection = 0;
   let introPos;
@@ -18,43 +14,43 @@
 
   let options = {
     root: null,
-    rootMargin: '0px',
+    rootMargin: "0px",
     threshold: 0.7
-  }
+  };
 
-  let observer = new IntersectionObserver(onIntersection, options)
+  let observer = new IntersectionObserver(onIntersection, options);
 
   onMount(() => {
     observer.observe(introPos);
     projectPositions.forEach(project => observer.observe(project));
     observer.observe(contactPos);
-  })
+  });
 
   function onIntersection(entries, observer) {
     let current = entries.filter(entry => entry.isIntersecting);
-    
+
     if (current.length > 0) {
       current = current[0].target.dataset.section;
-      
-      switch(current) {
+
+      switch (current) {
         case "intro":
           currentSection = 0;
-        break;
+          break;
         case "dev-profiles":
           currentSection = 1;
-        break;
+          break;
         case "gastronomical":
           currentSection = 2;
-        break;
+          break;
         case "game-of-life":
           currentSection = 3;
-        break;
+          break;
         case "portfolio":
           currentSection = 4;
-        break;
+          break;
         case "contact":
           currentSection = 5;
-        break;
+          break;
         default:
           return;
       }
@@ -62,20 +58,23 @@
   }
 </script>
 
+<svelte:head>
+  <title>Alberto | Front-End Developer</title>
+</svelte:head>
+
 <SideMenu {currentSection} />
-<main>
 <IntroSection bind:introPos />
 {#each $projectSectionData as project, index}
   <ProjectSection
-    name={project.name}
-    description={project.description}
-    image={project.image}
-    slug={project.slug}
-    bind:projectPos={projectPositions[index]}
+    name="{project.name}"
+    description="{project.description}"
+    image="{project.image}"
+    slug="{project.slug}"
+    bind:projectPos="{projectPositions[index]}"
   />
 {/each}
 <ContactSection bind:contactPos />
-</main>
 
 <style>
+
 </style>
