@@ -11,8 +11,17 @@
 
   function renderComponent(component, paramsObj) {
     params = paramsObj || {};
-    Route = component.default;
-    window.scrollTo(0, 0);
+    if (component.preload) {
+      component.preload({params}).then((res) => {
+        if (res.doesMatch) {
+          Route = component.default;
+          window.scrollTo(0, 0);
+        }
+      })
+    } else {
+      Route = component.default;
+      window.scrollTo(0, 0);
+    }
   }
 
   const router = Navaid("/", paramsObj => import("./pages/NotFound.svelte")

@@ -6,24 +6,33 @@
   {/if}
 </svelte:head>
 
-<script>
-  import { onMount } from 'svelte'
-  import {projectPageData} from '../data/stores.js';
-
-  export let params = {};
-
-  // possible preload
-  onMount(() => {
+<script context="module">
+  export function preload(res) {
     let doesMatch = false
-    for (let project in $projectPageData) {
-      if (params.project === project) {
+    let projects = ["dev-profiles", "gastronomical", "game-of-life", "portfolio"]
+
+    projects.forEach(project => {
+      if (res.params.project === project) {
         doesMatch = true
       }
-    }
+    })
+
     if (!doesMatch) {
       history.replaceState(null, "", "/projects/unknown")
+      return new Promise(function(resolve, reject) {
+        resolve({doesMatch});
+      });
+    } else {
+      return new Promise(function(resolve, reject) {
+        resolve({doesMatch});
+      });
     }
-  })
+  }
+</script>
+
+<script>
+  import {projectPageData} from '../data/stores.js';
+  export let params = {};
 </script>
 
 <h1>Hellooooo</h1>

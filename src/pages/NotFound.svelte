@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Page Not Found</title>
+  <title>URL Not Found</title>
 </svelte:head>
 
 <script>
