@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Alberto | Front-End Developer</title>
+</svelte:head>
+
 <script>
   import {onMount} from 'svelte'
   import SideMenu from '../components/SideMenu.svelte';
@@ -6,7 +10,6 @@
   import ContactSection from './sections/ContactSection.svelte';
 
   import {projectSectionData} from '../data/stores.js';
-
 
   let currentSection = 0;
   let introPos;
@@ -23,8 +26,8 @@
 
   onMount(() => {
     observer.observe(introPos);
-    observer.observe(contactPos);
     projectPositions.forEach(project => observer.observe(project));
+    observer.observe(contactPos);
   })
 
   function onIntersection(entries, observer) {

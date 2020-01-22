@@ -1,5 +1,7 @@
 <script>
   import { onDestroy } from 'svelte';
+  import { slide } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
   import Navaid from 'navaid';
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
@@ -10,30 +12,37 @@
   function renderComponent(component, paramsObj) {
     params = paramsObj || {};
     Route = component.default;
-		window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }
 
-  const router = Navaid("/", paramsObj => import("./pages/NotFoundPage.svelte")
+  const router = Navaid("/", paramsObj => import("./pages/NotFound.svelte")
   .then(component => renderComponent(component, paramsObj)))
 
   router
-  .on("/", () => import("./pages/HomePage.svelte")
+  .on("/", () => import("./pages/Home.svelte")
   .then(renderComponent))
 
-  // have a /projects component that shows all projects in a grid
   router
-  .on("/projects/:project", paramsObj => import("./pages/ProjectPage.svelte")
+  .on("/projects", () => import("./pages/ProjectsCollection.svelte")
+  .then(renderComponent))
+
+  router
+  .on("/projects/unknown", () => import("./pages/NotFound.svelte")
+  .then(component => renderComponent(component, "projects/:unknown")))
+
+  router
+  .on("/projects/:project", paramsObj => import("./pages/Project.svelte")
   .then(component => renderComponent(component, paramsObj)))
 
   router.listen();
   onDestroy(router.unlisten);
 </script>
 
+<!-- <div transition:slide="{{delay: 450, duration: 450, easing: quintOut }}" /> -->
 
 <Header />
 <svelte:component this={Route} {params} />
 <Footer />
-
 
 <style>
 </style>
