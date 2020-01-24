@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import startFresh from './rollup-plugin-fresh';
+import startFresh from 'rollup-plugin-fresh';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -27,9 +27,10 @@ export default {
     }),
 
     startFresh({
-      deleteAll: false,
       chosenDir: "./public/",
-      noDeleteOptions: ["global.css", ".html", ".png"]
+      deleteAll: false,
+      noDeleteOptions: ["global.css", ".html", ".png"],
+      quiet: false
     }),
 
     // used for external dependencies installed from npm
