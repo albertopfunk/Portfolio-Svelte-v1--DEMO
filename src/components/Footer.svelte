@@ -4,6 +4,9 @@
 
 <style>
   footer {
+    position: relative;
+    z-index: 10;
     border: solid;
+    background-color: blanchedalmond;
   }
 </style>

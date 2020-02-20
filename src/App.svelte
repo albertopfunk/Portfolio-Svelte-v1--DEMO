@@ -52,14 +52,28 @@
   onDestroy(router.unlisten);
 </script>
 
-<!-- <div transition:slide="{{delay: 450, duration: 450, easing: quintOut }}" /> -->
-
 <Header />
 <main>
-  <svelte:component this="{Route}" {params} />
+  {#if !Route}
+    <div transition:slide="{{delay: 450, duration: 450, easing: quintOut }}" />
+  {:else}
+    <svelte:component this="{Route}" {params} />
+  {/if}
 </main>
 <Footer />
 
 <style>
+  main {
+    height: 100%;
+  }
 
+  div {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: black;
+  }
 </style>
