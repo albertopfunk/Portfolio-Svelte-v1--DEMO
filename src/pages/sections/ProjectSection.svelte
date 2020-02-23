@@ -22,4 +22,8 @@
     width: 100%;
     border: solid;
   }
+  img {
+    height: 400px;
+    width: 600px;
+  }
 </style>

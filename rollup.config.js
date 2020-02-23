@@ -30,7 +30,7 @@ export default {
       chosenDir: "./public/",
       deleteAll: false,
       noDeleteOptions: ["global.css", ".html", ".png"],
-      quiet: false
+      quiet: true
     }),
 
     // used for external dependencies installed from npm

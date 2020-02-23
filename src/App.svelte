@@ -64,16 +64,16 @@
 
 <style>
   main {
-    height: 100%;
+    min-height: 100%;
   }
-
+  
   div {
     height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 10;
     background-color: black;
   }
 </style>
