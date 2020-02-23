@@ -55,9 +55,7 @@
 <Header />
 <main>
   {#if !Route}
-    <div
-      transition:slide="{{ delay: 450, duration: 450, easing: quintOut }}"
-    ></div>
+    <div transition:slide="{{delay: 450, duration: 450, easing: quintOut }}" />
   {:else}
     <svelte:component this="{Route}" {params} />
   {/if}
@@ -68,7 +66,7 @@
   main {
     min-height: 100%;
   }
-
+  
   div {
     height: 100%;
     width: 100%;
