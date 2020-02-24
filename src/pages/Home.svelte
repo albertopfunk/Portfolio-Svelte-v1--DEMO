@@ -56,13 +56,37 @@
       }
     }
   }
+
+  function scrollToSection(section) {
+    switch (section) {
+      case "intro":
+        introPos.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "dev-profiles":
+        projectPositions[0].scrollIntoView({ behavior: "smooth" });
+        break;
+      case "gastronomical":
+        projectPositions[1].scrollIntoView({ behavior: "smooth" });
+        break;
+      case "game-of-life":
+        projectPositions[2].scrollIntoView({ behavior: "smooth" });
+        break;
+      case "portfolio":
+        projectPositions[3].scrollIntoView({ behavior: "smooth" });
+        break;
+      case "contact":
+        contactPos.scrollIntoView({ behavior: "smooth" });
+        break;
+      default:
+        return;
+    }
+  }
 </script>
 
 <svelte:head>
   <title>Alberto | Front-End Developer</title>
 </svelte:head>
-
-<SideMenu {currentSection} />
+<SideMenu {currentSection} {scrollToSection} />
 <IntroSection bind:introPos />
 {#each $projectSectionData as project, index}
   <ProjectSection

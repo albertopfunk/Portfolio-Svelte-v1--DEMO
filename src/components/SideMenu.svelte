@@ -1,15 +1,46 @@
 <script>
   export let currentSection;
+  export let scrollToSection;
 </script>
 
 <aside>
   <ul>
-    <li class="{currentSection === 0 ? 'active' : ''}">1</li>
-    <li class="{currentSection === 1 ? 'active' : ''}">2</li>
-    <li class="{currentSection === 2 ? 'active' : ''}">3</li>
-    <li class="{currentSection === 3 ? 'active' : ''}">4</li>
-    <li class="{currentSection === 4 ? 'active' : ''}">5</li>
-    <li class="{currentSection === 5 ? 'active' : ''}">6</li>
+    <li
+      on:click="{scrollToSection('intro')}"
+      class="{currentSection === 0 ? 'active' : ''}"
+    >
+      o
+    </li>
+    <li
+      on:click="{scrollToSection('dev-profiles')}"
+      class="{currentSection === 1 ? 'active' : ''}"
+    >
+      o
+    </li>
+    <li
+      on:click="{scrollToSection('gastronomical')}"
+      class="{currentSection === 2 ? 'active' : ''}"
+    >
+      o
+    </li>
+    <li
+      on:click="{scrollToSection('game-of-life')}"
+      class="{currentSection === 3 ? 'active' : ''}"
+    >
+      o
+    </li>
+    <li
+      on:click="{scrollToSection('portfolio')}"
+      class="{currentSection === 4 ? 'active' : ''}"
+    >
+      o
+    </li>
+    <li
+      on:click="{scrollToSection('contact')}"
+      class="{currentSection === 5 ? 'active' : ''}"
+    >
+      o
+    </li>
   </ul>
 </aside>
 
@@ -18,6 +49,7 @@
     position: fixed;
     top: 50%;
     right: 2%;
+    z-index: 30;
   }
   .active {
     border: solid;

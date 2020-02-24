@@ -7,7 +7,7 @@
   export let slug;
 </script>
 
-<section data-section="{slug}" bind:this="{projectPos}">
+<section id="{slug}" data-section="{slug}" bind:this="{projectPos}">
   <h1>{name}</h1>
   <p>{description}</p>
   <a href="/projects/{slug}">

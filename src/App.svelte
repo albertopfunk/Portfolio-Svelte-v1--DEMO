@@ -55,11 +55,8 @@
 <Header />
 <main>
   {#if !Route}
-    <div
-      transition:slide="{{ delay: 450, duration: 450, easing: quintOut }}"
-    >
+    <div transition:slide="{{ delay: 450, duration: 450, easing: quintOut }}">
       <h1>LOADING...</h1>
-      
     </div>
   {:else}
     <svelte:component this="{Route}" {params} />
