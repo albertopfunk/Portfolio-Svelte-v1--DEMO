@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss';
 import startFresh from 'rollup-plugin-fresh';
 
 const production = !process.env.ROLLUP_WATCH;
@@ -26,10 +27,15 @@ export default {
       }
     }),
 
+    postcss({
+      extract: 'public/global.css',
+      minimize: true,
+    }),
+
     startFresh({
       chosenDir: "./public/",
       deleteAll: false,
-      noDeleteOptions: ["global.css", ".html", ".png"],
+      noDeleteOptions: [".html", ".png"],
       quiet: true
     }),
 
