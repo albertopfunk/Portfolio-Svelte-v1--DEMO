@@ -3,9 +3,9 @@
     let doesMatch = false;
     let projects = {
       "dev-profiles": "dev-profiles",
-      "gastronomical": "gastronomical",
+      gastronomical: "gastronomical",
       "game-of-life": "game-of-life",
-      "portfolio": "portfolio"
+      portfolio: "portfolio"
     };
 
     if (projects[res.params.project]) {
