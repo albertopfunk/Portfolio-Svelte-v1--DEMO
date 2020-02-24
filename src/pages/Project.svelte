@@ -1,18 +1,16 @@
 <script context="module">
   export function preload(res) {
     let doesMatch = false;
-    let projects = [
-      "dev-profiles",
-      "gastronomical",
-      "game-of-life",
-      "portfolio"
-    ];
+    let projects = {
+      "dev-profiles": "dev-profiles",
+      "gastronomical": "gastronomical",
+      "game-of-life": "game-of-life",
+      "portfolio": "portfolio"
+    };
 
-    projects.forEach(project => {
-      if (res.params.project === project) {
-        doesMatch = true;
-      }
-    });
+    if (projects[res.params.project]) {
+      doesMatch = true;
+    }
 
     if (!doesMatch) {
       history.replaceState(null, "", "/projects/unknown");
