@@ -3,7 +3,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import preprocess from "svelte-preprocess";
 import postcss from "rollup-plugin-postcss";
 import startFresh from "rollup-plugin-fresh";
 
@@ -21,17 +20,12 @@ export default {
   },
 
   plugins: [
-    postcss({ extract: "public/global.css", minimize: true, plugins }),
+    // postcss will bundle global+svelte styles
+    postcss({ extensions: [ '.css' ], extract: true, minimize: true, plugins }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
-
-      preprocess: preprocess({ postcss: { plugins } }),
-
-      // extract any component CSS out into a separate file
-      css: css => {
-        css.write("public/bundle.css");
-      }
+      emitCss: true,
     }),
 
     startFresh({
