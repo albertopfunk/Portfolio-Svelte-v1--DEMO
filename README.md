@@ -1,27 +1,27 @@
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Portfolio v1 -- rollup-plugin-fresh DEMO
 
----
+First iteration of my portfolio site.
 
-# svelte app
+This project is now only used as a demo for rollup-plugin-fresh.
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+Visit current iteration of portfolio by going to [portfolio-svelte-v2](https://github.com/albertopfunk/portfolio-svelte-v2).
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+## Table of contents
+* [General info](#general-info)
+* [Get started](#get-started)
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+## General info
 
+This is an esm project, so all the files are kept in public directory.
+
+rollup-plugin-fresh helps with that by removing all the files from that directory, except the default files(specified in rollup.config.js file).
 
 ## Get started
 
-Install the dependencies...
+Fork and install the dependencies.
 
 ```bash
-cd svelte-app
 npm install
 ```
 
@@ -31,63 +31,19 @@ npm install
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+You can start editing files and watch as rollup creates new mapped files as it compiles the project.
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-
-## Building and running in production mode
-
-To create an optimised version of the app:
+Now instead of having to manually remove all the files, you can just restart the server.
 
 ```bash
-npm run build
+CTRL+c(windows)
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
+then
 
 ```bash
-npm install -g now
+npm run dev
 ```
 
-Then, from within your project folder:
+rollup-plugin-fresh will automatically remove the unused files for you so you can start fresh.
 
-```bash
-cd public
-now deploy --name my-project
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
