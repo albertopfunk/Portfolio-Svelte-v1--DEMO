@@ -47,3 +47,4 @@ npm run dev
 
 rollup-plugin-fresh will automatically remove the unused files for you so you can start fresh.
 
+Visit [rollup-plugin-fresh README](https://github.com/albertopfunk/rollup-plugin-fresh#readme) for more information and configuration options.
