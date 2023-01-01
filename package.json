@@ -22,7 +22,7 @@
     "rollup": "^2.23.0",
     "rollup-plugin-fresh": "^2.6.3",
     "rollup-plugin-livereload": "^1.3.0",
-    "rollup-plugin-postcss": "^3.1.3",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-terser": "^6.1.0",
     "sirv-cli": "^1.0.5",
